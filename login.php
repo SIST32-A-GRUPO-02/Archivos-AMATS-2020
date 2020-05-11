@@ -15,5 +15,4 @@
 </body>
 <html>
 <?php
-	foreach($consulta as $dato){
 ?>

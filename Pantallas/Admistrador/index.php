@@ -54,11 +54,14 @@
                     <li class="active">
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admistración</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
+                          <li>
+                              <a href="?x=DocenteAd.php">Nuevos Docentes</a>
+                          </li>
                             <li>
                                 <a href="#">Especialidad</a>
                             </li>
                             <li>
-                                <a href="?x=DocenteAd.php">Usuarios</a>
+                                <a href="#">Usuarios</a>
                             </li>
                             <li>
                                 <a href="#">Roles</a>
@@ -68,9 +71,7 @@
                     <li>
                         <a href="#">Reportes</a>
                     </li>
-                    <li>
-                        <a href="#">Cerrar sesión</a>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>

@@ -66,9 +66,7 @@
 	          <li>
               <a href="#">Reportes</a>
 	          </li>
-	          <li>
-              <a href="#">Cerrar sesión</a>
-	          </li>
+	    
 	        </ul>
 	      </div>
     	</nav>
