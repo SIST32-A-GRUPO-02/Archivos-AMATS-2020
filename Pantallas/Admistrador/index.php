@@ -30,7 +30,7 @@
                                 <a href="?x=AlumnosAd.php">Alumnos</a>
                             </li>
                             <li>
-                                <a href="#">Notas</a>
+                                <a href="?x=NotasAd.php">Notas</a>
                             </li>
                         </ul>
                     </li>
@@ -105,8 +105,6 @@
                     </div>
                 </div>
             </nav>
-
-            <h2 class="mb-4">Control de notas para centro técnico</h2>
             <?php
             if (isset($_GET['x'])) {
                 include($_GET['x']);
