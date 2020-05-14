@@ -18,7 +18,7 @@
        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:700px">
          <div class="w3-center"><br>
            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-           <p>Registrar Usuario</p>
+           <h3>Agregar nuevos docentes</h3>
          </div>
          <form class="w3-container" method="get" action="insert.php">
            <div class="w3-section">
@@ -52,7 +52,7 @@
                 ?>
 
              </select>
-             <label><b>DUI</b></label>
+              <label><b>DUI</b></label>
              <input class="w3-input w3-border" type="text" placeholder="Escriba el número de DUI" name="dui" required>
              <label><b>NIT</b></label>
              <input class="w3-input w3-border" type="text" placeholder="Escriba el número de NIT" name="nit" required>
