@@ -117,7 +117,7 @@
                     $especialidad = $datos['nombreEspecialidad'];
                   ?>
                    <tr>
-                     <td><input type='radio' value='<?php echo $id_del; ?>' name='id_us'></td>
+                     <td><input type='radio' value='<?php echo $id_del; ?>' name='id_us' required></td>
                      <td> <?php echo $nombre; ?></td>
                      <td><?php echo $apellidos; ?></td>
                      <td><?php echo $especialidad; ?></td>
