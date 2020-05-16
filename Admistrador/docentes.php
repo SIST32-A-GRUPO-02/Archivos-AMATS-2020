@@ -32,7 +32,7 @@
              <label><b>Telefono</b></label>
              <input class="w3-input w3-border" type="text" placeholder="Escriba el Telefono" name="telefono" required>
              <label><b>Dirección</b></label>
-             <input class="w3-input w3-border" type="text" placeholder="Escriba el Telefono" name="direccion" required>
+             <input class="w3-input w3-border" type="text" placeholder="Escriba la dirección" name="direccion" required>
              <label><b>Sexo</b></label>
              <select name="sexo" id="" class="w3-input w3-border">
                <option value="Hombre"><b>Hombre</b></option>

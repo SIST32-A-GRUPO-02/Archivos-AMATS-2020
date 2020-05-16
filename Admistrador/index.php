@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
                 <ul class="list-unstyled components mb-5">
 
                     <li>
-                    <a href=""> <span class="material-icons"><img src="../images/icons/alumnos.png" alt=""></span>  Alumnos</a>
+                    <a href="?x=alumnos.php"> <span class="material-icons"><img src="../images/icons/alumnos.png" alt=""></span>  Alumnos</a>
                     </li>
                     <li>
                     <a href=""> <span class="material-icons"><img src="../images/icons/convocatorias.png" alt=""></span>  Convocatorias</a>
