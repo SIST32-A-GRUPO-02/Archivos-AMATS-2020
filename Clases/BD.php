@@ -69,8 +69,7 @@ class baseD{
         return false;  
     }
 
-    public function prueba(){
-        echo "hola";
+    public function comprobar_sesion(){
     }
 }
 ?>
