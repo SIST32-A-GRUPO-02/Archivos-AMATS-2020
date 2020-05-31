@@ -18,7 +18,6 @@ class baseD{
     public function insertar($tabla, $datos){
         $resultado = $this->conexion->query("INSERT INTO $tabla VALUES ($datos)") or die($this->conexion->error);
     if($resultado)
-    echo "Se agrego con exito";
         return true;
     return false;
     }
@@ -69,7 +68,8 @@ class baseD{
         return false;  
     }
 
-    public function comprobar_sesion(){
+    public function prueba(){
+        echo "hola";
     }
 }
 ?>
