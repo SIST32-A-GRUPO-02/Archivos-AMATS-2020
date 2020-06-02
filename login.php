@@ -23,4 +23,18 @@
   );
 </script>
 <html>
+<?php
+require_once "Clases/BD.php";
+
+$conn= new baseD();
+
+$consulta= $conn->busqueda("rol");
+
+	foreach($consulta as $dato){
+		echo $dato['idRol']."<br />";
+	}
+
+
+
+?>
 

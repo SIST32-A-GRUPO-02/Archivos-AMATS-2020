@@ -18,7 +18,6 @@ class baseD{
     public function insertar($tabla, $datos){
         $resultado = $this->conexion->query("INSERT INTO $tabla VALUES ($datos)") or die($this->conexion->error);
     if($resultado)
-    echo "Se agrego con exito";
         return true;
     return false;
     }
@@ -69,12 +68,13 @@ class baseD{
         return false;  
     }
 
+
     public function comprobar_sesion($sesion){
         if($sesion==false){
             echo "<script type='text/javascript' charset='utf-8' async defer>alert('Primero debe iniciar sesión'),</script>";
             header("location: ../index.php");
         }
         return false;
-    }
+
 }
 ?>
