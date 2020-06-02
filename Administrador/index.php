@@ -1,5 +1,13 @@
+<?php
+@session_start();
+
+include "../Clases/BD.php";
+
+$conn= new baseD();
+$conn->comprobar_sesion($_SESSION['rol']);
+?>
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Inicio</title>
@@ -20,7 +28,7 @@
             <div class="p-4 pt-2">
                 <a href="./index.php"><img src="../images/logo.png" alt="" width="80px" class="img logo  mb-5"></a>
                 <ul class="list-unstyled components mb-5">
-
+                  
                     <li>
                     <a href="?x=alumnos.php"> <span class="material-icons"><img src="../images/icons/alumnos.png" alt=""></span>  Alumnos</a>
                     </li>
@@ -68,26 +76,31 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Inicio</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php">Inicio</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Ayuda</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Sesión</a>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="#">Ayuda</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b><?php echo strtoupper($_SESSION['Nombre']);?> &nbsp</b></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="../cerrar.php">Cerrar</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <h2 class="mb-4">Control de notas para centro técnico</h2>
+            <h2 class="mb-4"></h2>
             <?php
             if (isset($_GET['x'])) {
                 include($_GET['x']);
-            } else {
+            }
+            else{
+
             }
 
             ?>

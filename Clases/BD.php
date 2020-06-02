@@ -64,12 +64,17 @@ class baseD{
     /////La funcion para buscar con parametros de sql
     /////////////////////////////////////////////
     public function busquedaFree($dato){
-        $resultado = $this->conexion->query($dato) or die($this->conexion->error);
+        $resultado = $this->conexion->query("$dato") or die($this->conexion->error);
             return $resultado->fetch_all(MYSQLI_ASSOC);
         return false;  
     }
 
-    public function comprobar_sesion(){
+    public function comprobar_sesion($sesion){
+        if($sesion==false){
+            echo "<script type='text/javascript' charset='utf-8' async defer>alert('Primero debe iniciar sesión'),</script>";
+            header("location: ../index.php");
+        }
+        return false;
     }
 }
 ?>

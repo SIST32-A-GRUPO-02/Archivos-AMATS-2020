@@ -1,8 +1,10 @@
-<?php 
-session_start();
-if(!isset($_SESSION['codigo'])){
-    header("Location: ../index.php");
-}
+<?php
+@session_start();
+
+include "../Clases/BD.php";
+
+$conn= new baseD();
+$conn->comprobar_sesion($_SESSION['rol']);
 ?>
 <!doctype html>
 <html lang="es">
@@ -54,7 +56,7 @@ if(!isset($_SESSION['codigo'])){
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="./index.php">Inicio</a>
                             </li>
 
@@ -62,9 +64,9 @@ if(!isset($_SESSION['codigo'])){
                                 <a class="nav-link" href="#">Ayuda</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sesión &nbsp</a>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b><?php echo strtoupper($_SESSION['Nombre']);?> &nbsp</b></a>
                                 <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Cerrar</a>
+                                <a class="dropdown-item" href="../cerrar.php">Cerrar</a>
                                 </div>
                             </li>
                         </ul>
