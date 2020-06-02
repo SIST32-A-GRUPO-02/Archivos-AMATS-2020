@@ -49,7 +49,6 @@ class baseD{
             return true;
         return false;  
     }
-
     /////////////////////////////////////////////
     /////La funcion para buscar en  una sola tabla
     /////////////////////////////////////////////
@@ -75,6 +74,8 @@ class baseD{
             header("location: ../index.php");
         }
         return false;
+
+}
 
 }
 ?>
