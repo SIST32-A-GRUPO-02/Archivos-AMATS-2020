@@ -83,6 +83,7 @@ $conn->comprobar_sesion($_SESSION['rol'], $_SERVER["REQUEST_URI"]);
             if (isset($_GET['x'])) {
                 include($_GET['x']);
             } else {
+                include("../Pagina principal.html");
             }
 
             ?>

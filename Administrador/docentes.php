@@ -4,7 +4,7 @@
 
 
 $conn= new baseD();
-$conn->comprobar_sesion($_SESSION['rol']);
+$conn->comprobar_sesion($_SESSION['rol'], $_SERVER['REQUEST_IRU']);
 ?>
  <!DOCTYPE html>
  <html>

@@ -4,7 +4,7 @@
 include "../Clases/BD.php";
 
 $conn= new baseD();
-$conn->comprobar_sesion($_SESSION['rol']);
+$conn->comprobar_sesion($_SESSION['rol'], $_SERVER['REQUEST_URI']);
 ?>
 <!doctype html>
 <html lang="es">
@@ -100,7 +100,7 @@ $conn->comprobar_sesion($_SESSION['rol']);
                 include($_GET['x']);
             }
             else{
-
+                include("../Pagina principal.html");
             }
 
             ?>

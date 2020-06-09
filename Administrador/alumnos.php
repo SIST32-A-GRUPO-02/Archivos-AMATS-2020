@@ -2,8 +2,6 @@
 @session_start();
 
 
-$conn= new baseD();
-$conn->comprobar_sesion($_SESSION['rol']);
 ?>
 
 <!DOCTYPE html>

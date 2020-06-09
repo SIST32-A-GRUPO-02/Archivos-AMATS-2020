@@ -7,7 +7,7 @@ class baseD{
     public $conexion;
 
     public function __construct(){
-        $this->conexion=new mysqli($this->host, $this->usuario, $this->clave, "dawproyecto") or die(mysql_error());
+        $this->conexion=new mysqli($this->host, $this->usuario, $this->clave, "dawproyecto");
         $this->conexion->set_charset("utf8");
     }
     ///////////////////////////////////////////
@@ -26,7 +26,7 @@ class baseD{
     public function borrar($tabla,$condicion){
         $resultado = $this->conexion->query("DELETE FROM $tabla WHERE $condicion") or die($this->conexion->error);
         return true;
-    return false;   
+  
     }
 
     ////////////////////////////////////////////
@@ -36,7 +36,7 @@ class baseD{
     public function actualizar($tabla, $campos, $condicion){
         $resultado = $this->conexion->query("UPDATE $tabla SET $campos WHERE $condicion") OR die($this->conexion->error);
         return true;
-    return false;    
+    
     }
 
     //////////////////////////////////////////////////////
@@ -45,7 +45,7 @@ class baseD{
     public function BusquedaCondicional($tabla, $condicion){
         $resultado = $this->conexion->query("SELECT * FROM $tabla WHERE $condicion") or die($this->conexion->error);
             return true;
-        return false;  
+      
     }
     /////////////////////////////////////////////
     /////La funcion para buscar en  una sola tabla
@@ -53,7 +53,7 @@ class baseD{
     public function busqueda($tabla){
         $resultado = $this->conexion->query("SELECT * FROM $tabla") or die($this->conexion->error);
             return $resultado->fetch_all(MYSQLI_ASSOC);
-        return false;  
+        
     }
 	
 	 /////////////////////////////////////////////
@@ -62,7 +62,7 @@ class baseD{
     public function busquedaFree($dato){
         $resultado = $this->conexion->query("$dato") or die($this->conexion->error);
             return $resultado->fetch_all(MYSQLI_ASSOC);
-        return false;
+       
     }
 
 
@@ -70,7 +70,7 @@ class baseD{
       if($sesion==true){
         switch ($sesion) {
             case 1:
-               if($posicion!="/Proyectos/Archivos-AMATS-2020/Admistrador/index.php"){
+               if($posicion!="/Proyectos/Archivos-AMATS-2020/Administrador/index.php"){
                 header("location: ../index.php");
                }
              break;
@@ -85,7 +85,6 @@ class baseD{
                }
              break;
            }
-           
       }
       else{
           header("location: ../index.php");
@@ -93,27 +92,14 @@ class baseD{
       return false;
     }
 
-    public function comprobar_posicion($sesion){
-        switch ($sesion) {
-            case 1:
-                if($sesion!=1){
-                    header("location: ../index.php");
-                }
+ 
 
-             break;
-              case 2:
-                if($sesion!=2){
-                    header("location: ../index.php");
-                }
-               break;
-            case 3:
-                if($sesion!=3){
-                    header("location: ../index.php");
-                }
-             break;
-           }
-        return false;
-    } 
-
+	/**
+	 * 
+	 * @return mixed
+	 */
+	function getUsuario() {
+		return $this->usuario;
+	}
 }
 ?>
