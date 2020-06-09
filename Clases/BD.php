@@ -10,11 +10,9 @@ class baseD{
         $this->conexion=new mysqli($this->host, $this->usuario, $this->clave, "dawproyecto") or die(mysql_error());
         $this->conexion->set_charset("utf8");
     }
-
-
-    /////////////////////////////////////////
+    ///////////////////////////////////////////
     /////La funcion para insertar a las tablas
-    ////////////////////////////////////////
+    //////////////////////////////////////////
     public function insertar($tabla, $datos){
         $resultado = $this->conexion->query("INSERT INTO $tabla VALUES ($datos)") or die($this->conexion->error);
     if($resultado)
@@ -22,18 +20,18 @@ class baseD{
     return false;
     }
 
-    ////////////////////////////////////////
+    /////////////////////////////////////////
     /////La funcion para borrar en las tablas
-    ////////////////////////////////////////
+    /////////////////////////////////////////
     public function borrar($tabla,$condicion){
         $resultado = $this->conexion->query("DELETE FROM $tabla WHERE $condicion") or die($this->conexion->error);
         return true;
     return false;   
     }
 
-    //////////////////////////////////////////
+    ////////////////////////////////////////////
     /////La funcion para actulizar a las tablas
-    /////////////////////////////////////////
+    ///////////////////////////////////////////
 
     public function actualizar($tabla, $campos, $condicion){
         $resultado = $this->conexion->query("UPDATE $tabla SET $campos WHERE $condicion") OR die($this->conexion->error);
@@ -41,9 +39,9 @@ class baseD{
     return false;    
     }
 
-    /////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
     /////La funcion para buscar por condición a las tablas
-    /////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
     public function BusquedaCondicional($tabla, $condicion){
         $resultado = $this->conexion->query("SELECT * FROM $tabla WHERE $condicion") or die($this->conexion->error);
             return true;
@@ -64,18 +62,58 @@ class baseD{
     public function busquedaFree($dato){
         $resultado = $this->conexion->query("$dato") or die($this->conexion->error);
             return $resultado->fetch_all(MYSQLI_ASSOC);
-        return false;  
+        return false;
     }
 
 
-    public function comprobar_sesion($sesion){
-        if($sesion==false){
-            echo "<script type='text/javascript' charset='utf-8' async defer>alert('Primero debe iniciar sesión'),</script>";
-            header("location: ../index.php");
-        }
-        return false;
+    public function comprobar_sesion($sesion, $posicion){
+      if($sesion==true){
+        switch ($sesion) {
+            case 1:
+               if($posicion!="/Proyectos/Archivos-AMATS-2020/Admistrador/index.php"){
+                header("location: ../index.php");
+               }
+             break;
+              case 2:
+               if($posicion!="/Proyectos/Archivos-AMATS-2020/Docente/index.php"){
+                header("location: ../index.php");
+               }
+               break;
+            case 3:
+               if($posicion!="/Proyectos/Archivos-AMATS-2020/Alumno/index.php"){
+                header("location: ../index.php");
+               }
+             break;
+           }
+           
+      }
+      else{
+          header("location: ../index.php");
+      }
+      return false;
+    }
 
-}
+    public function comprobar_posicion($sesion){
+        switch ($sesion) {
+            case 1:
+                if($sesion!=1){
+                    header("location: ../index.php");
+                }
+
+             break;
+              case 2:
+                if($sesion!=2){
+                    header("location: ../index.php");
+                }
+               break;
+            case 3:
+                if($sesion!=3){
+                    header("location: ../index.php");
+                }
+             break;
+           }
+        return false;
+    } 
 
 }
 ?>

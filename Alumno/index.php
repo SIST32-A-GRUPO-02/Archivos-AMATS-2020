@@ -1,10 +1,8 @@
 <?php
 @session_start();
-
 include "../Clases/BD.php";
-
-$conn= new baseD();
-$conn->comprobar_sesion($_SESSION['rol']);
+$conn= new baseD(); 
+$conn->comprobar_sesion($_SESSION['rol'], $_SERVER['REQUEST_URI']);
 ?>
 <!doctype html>
 <html lang="es">
@@ -30,10 +28,9 @@ $conn->comprobar_sesion($_SESSION['rol']);
                         <a href="?x=notas.php"> <span class="material-icons"><img src="../images/icons/notas.png" alt="">  Notas</a>
                     </li>
                     <li>
-                    <a href="?x=alumnos.php"> <span class="material-icons"><img src="../images/icons/alumnos.png" alt=""></span>  Alumnos</a>
+                    <a href="?x=cursos.php"> <span class="material-icons"><img src="../images/icons/cursos.png" alt=""></span>  Cursos</a>
                     </li>
-                    <li>
-                        <a href="?x=evaluaciones.php"> <span class="material-icons"><img src="../images/icons/evaluaciones.png" alt="">  Evaluaciones</a>
+                    <li><a href="?x=docentes.php"> <span class="material-icons"><img src="../images/icons/docentes.png" alt=""></span>  Docentes</a>
                     </li>
                     <li>
                         <a href="?x=reportes.php"> <span class="material-icons"><img src="../images/icons/reportes.png" alt="">  Reportes</a>
@@ -64,9 +61,9 @@ $conn->comprobar_sesion($_SESSION['rol']);
                                 <a class="nav-link" href="#">Ayuda</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo strtoupper($_SESSION['Nombre']);?> &nbsp&nbsp</a>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b><?php echo strtoupper($_SESSION['Nombre']);?> &nbsp</b></a>
                                 <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Cerrar</a>
+                                <a class="dropdown-item" href="../cerrar.php">Cerrar</a>
                                 </div>
                             </li>
                         </ul>
@@ -83,12 +80,9 @@ $conn->comprobar_sesion($_SESSION['rol']);
         </div>
     </div>
 
-
-
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
-
 </html>
