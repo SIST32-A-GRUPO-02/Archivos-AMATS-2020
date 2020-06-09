@@ -3,8 +3,8 @@
 
 include_once "../Clases/BD.php";
 
-$conn= new baseD();
-$conn->comprobar_sesion($_SESSION['rol']);
+/* $conn= new baseD();
+$conn->comprobar_sesion($_SESSION['rol']); */
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,7 +14,7 @@ $conn->comprobar_sesion($_SESSION['rol']);
   <title>notas</title>
 </head>
 <body>
-
+<h2>Notas</h2>
 <table class="table">
                <thead class="thead-dark">
                  <tr>

@@ -1,14 +1,11 @@
-<?php
-@session_start();
-
-
-?>
-
-<!DOCTYPE html>
+ <?php
+  //include_once("menuAdmi.php");
+  ?>
+ <!DOCTYPE html>
  <html>
 
  <head>
-   <title>Participante</title>
+   <title>Docente</title>
  </head>
 
  <body>
@@ -24,18 +21,16 @@
        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:700px">
          <div class="w3-center"><br>
            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-           <p>Registrar Alumno</p>
+           <p>Registrar Usuario</p>
          </div>
-         <form class="w3-container" method="post" action="mant_alumnos.php">
+         <form class="w3-container" method="post" action="mant_docentes.php">
            <div class="w3-section">
              <label><b>Nombre</b></label>
              <input class="w3-input w3-border " type="text" placeholder="Escriba el Nombre" name="nombre" required>
              <label><b>Apellido</b></label>
              <input class="w3-input w3-border" type="text" placeholder="Escriba los Apellidos" name="apellido" required>
-             <label><b>Telefono celular</b></label>
-             <input class="w3-input w3-border" type="text" placeholder="Escriba el Telefono" name="telefono_personal" id="telp" required>
-             <label><b>Telefono fijo</b></label>
-             <input class="w3-input w3-border" type="text" placeholder="Escriba el Telefono" name="telefono_fijo" id="telc" required>
+             <label><b>Telefono</b></label>
+             <input class="w3-input w3-border" type="text" placeholder="Escriba el Telefono" name="telefono" required>
              <label><b>Dirección</b></label>
              <input class="w3-input w3-border" type="text" placeholder="Escriba la dirección" name="direccion" required>
              <label><b>Sexo</b></label>
@@ -43,16 +38,16 @@
                <option value="Hombre"><b>Hombre</b></option>
                <option value="Mujer"><b>Mujer</b></option>
              </select>
-             <label><b>Convocatoria</b></label>
-             <select name="convocatoria" id="" class="w3-input w3-border">
+             <label><b>Epecialidad</b></label>
+             <select name="especialidad" id="" class="w3-input w3-border">
                <?php
                 require_once "../Clases/BD.php";
                 $conn = new baseD();
-                $consulta = $conn->busqueda("convocatoria");
+                $consulta = $conn->busqueda("especialidad");
 
                 foreach ($consulta as $datos) {
-                  $id = $datos['idConvocatoria'];
-                  $nombre = $datos['nombreConvocatoria'];
+                  $id = $datos['idEspecialidad'];
+                  $nombre = $datos['nombreEspecialidad'];
                 ?>
                  <option value="<?php echo $id; ?>"><?php echo $nombre; ?></option>
                <?php
@@ -80,9 +75,9 @@
        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:700px">
          <div class="w3-center"><br>
            <span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-           <p>Mantenimiento de Alumnos</p>
+           <p>Mantenimiento de Docentes</p>
          </div>
-         <form class="w3-container" method="post" action="mant_alumnos.php">
+         <form class="w3-container" method="post" action="mant_docentes.php">
            <div class="w3-section">
              <table class="table">
                <thead class="thead-dark">
@@ -90,43 +85,42 @@
                    <th scope="col">#</th>
                    <th scope="col">Nombre</th>
                    <th scope="col">Apellido</th>
-                   <th scope="col">Convocatoria</th>
+                   <th scope="col">Especialidad</th>
                  </tr>
                </thead>
                <tbody>
 
                  <?php
                   $conn = new baseD();
-                  $consulta_participante = $conn->busquedaFree("SELECT
-                `participante`.`idParticipante`,
-                `participante`.`nombres`,
-                `participante`.`apellidos`,
-                `participante`.`fechaNacimiento`,
-                `participante`.`sexo`,
-                `participante`.`dui`,
-                `participante`.`nit`,
-                `participante`.`direccion`,
-                `convocatoria`.`nombreConvocatoria`
+                  $consulta_docentes = $conn->busquedaFree("SELECT
+                `docente`.`idDocente`,
+                `docente`.`nombres`,
+                `docente`.`apellidos`,
+                `docente`.`fechaNacimiento`,
+                `docente`.`sexo`,
+                `docente`.`dui`,
+                `docente`.`nit`,
+                `docente`.`direccion`,
+                `especialidad`.`nombreEspecialidad`
               FROM
-                `dawproyecto`.`participante`
-                INNER JOIN `dawproyecto`.`convocatoria`
+                `dawproyecto`.`docente`
+                INNER JOIN `dawproyecto`.`especialidad`
                   ON (
-                    `participante`.`idConvocatoria` = `convocatoria`.`idConvocatoria`
-                  ) 
-                  ;
+                    `docente`.`idEspecialidad` = `especialidad`.`idEspecialidad`
+                  );
               ");
 
-                  foreach ($consulta_participante as $datos) {
-                    $id_del = $datos['idParticipante'];
+                  foreach ($consulta_docentes as $datos) {
+                    $id_del = $datos['idDocente'];
                     $nombre = $datos['nombres'];
                     $apellidos = $datos['apellidos'];
-                    $convocatoria = $datos['nombreConvocatoria'];
+                    $especialidad = $datos['nombreEspecialidad'];
                   ?>
                    <tr>
                      <td><input type='radio' value='<?php echo $id_del; ?>' name='id_us' required></td>
                      <td> <?php echo $nombre; ?></td>
                      <td><?php echo $apellidos; ?></td>
-                     <td><?php echo $convocatoria; ?></td>
+                     <td><?php echo $especialidad; ?></td>
                    </tr>
 
                  <?php
@@ -155,41 +149,35 @@
              <tr>
                <th scope="col">Nombre</th>
                <th scope="col">Apellido</th>
-               <th scope="col">Telefono</th>
                <th scope="col">Fecha de Nacimiento</th>
                <th scope="col">Sexo</th>
                <th scope="col">Dui</th>
                <th scope="col">Nit</th>
                <th scope="col">Dirección</th>
-               <th scope="col">Convocatoria</th>
+               <th scope="col">Especialidad</th>
              </tr>
            <tbody>
 
              <?php
               $consulta = $conn->busquedaFree("SELECT
-  `participante`.`idParticipante`,
-  `participante`.`nombres`,
-  `participante`.`apellidos`,
-  `participante`.`fechaNacimiento`,
-  `participante`.`sexo`,
-  `participante`.`dui`,
-  `participante`.`nit`,
-  `participante`.`direccion`,
-  `convocatoria`.`nombreConvocatoria`,
-  `telefonoparticipante`.`numeroTelefono`
+  `docente`.`idDocente`,
+  `docente`.`nombres`,
+  `docente`.`apellidos`,
+  `docente`.`fechaNacimiento`,
+  `docente`.`sexo`,
+  `docente`.`dui`,
+  `docente`.`nit`,
+  `docente`.`direccion`,
+  `especialidad`.`nombreEspecialidad`
 FROM
-  `dawproyecto`.`participante`
-  INNER JOIN `dawproyecto`.`convocatoria`
+  `dawproyecto`.`docente`
+  INNER JOIN `dawproyecto`.`especialidad`
     ON (
-      `participante`.`idConvocatoria` = `convocatoria`.`idConvocatoria`
-    )
-    INNER JOIN `dawproyecto`.`telefonoparticipante`
-                  ON (
-                    `participante`.`idParticipante` = `telefonoparticipante`.`idParticipante`
-                  ) Where idTelefono = 2;
+      `docente`.`idEspecialidad` = `especialidad`.`idEspecialidad`
+    );
 ");
               foreach ($consulta as $datos) {
-                $id = $datos['idParticipante'];
+                $id = $datos['idDocente'];
                 $nombre = $datos["nombres"];
                 $apellido = $datos['apellidos'];
                 $fecha = $datos['fechaNacimiento'];
@@ -197,18 +185,16 @@ FROM
                 $dui = $datos['dui'];
                 $nit = $datos['nit'];
                 $direccion = $datos['direccion'];
-                $convocatoria = $datos['nombreConvocatoria'];
-                $telefono = $datos['numeroTelefono'];
+                $especialidad = $datos['nombreEspecialidad'];
                 echo " <tr>
           <td>$nombre</td>
           <td>$apellido</td>
-          <td>$telefono</td>
           <td>$fecha</td>
           <td>$sexo</td>
           <td>$dui</td>
           <td>$nit</td>
           <td>$direccion</td>
-          <td>$convocatoria</td>
+          <td>$especialidad</td>
         </tr>";
               }
 
@@ -217,16 +203,5 @@ FROM
        </form>
      </div>
  </body>
-<script>
-  $( function() {
-    $("#telp").change( function() {
-        if ($(this).val() !== "") {
-            $("#telc").removeAttr("required");
-        }else{
-          $('#telc').prop("required", true);
-        }
-    });
-});
-</script>
+
  </html>
-            

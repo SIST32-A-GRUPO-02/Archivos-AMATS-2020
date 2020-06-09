@@ -1,50 +1,102 @@
-<?php
+<?php 
 @session_start();
-
-$conn= new baseD();
-$conn->comprobar_sesion($_SESSION['rol']);
+require_once "../Clases/BD.php";
+$conn = new baseD();
+/* if(isset($_SESSION['rol'])){
+  $conn->comprobar_posicion($_SESSION['rol']);
+}
+else{
+  header("location: index.php");
+} */
 ?>
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+ <html>
 
-<table class="table">
-               <thead class="thead-dark">
-                 <tr>
-                   <th scope="col">#</th>
-                   <th scope="col">Nombre</th>
-                   <th scope="col">Apellido</th>
-                   <th scope="col">Especialidad</th>
-                 </tr>
-               </thead>
-    <?php
-    include_once "../Clases/BD.php";
-    $conn = new baseD();
-    
-    $consulta_docentes = $conn->busquedaFree("");
+ <head>
+   <title>Participante</title>
+ </head>
 
-    foreach ($consulta_docentes as $datos) {
-        $id_del = $datos['idDocente'];
-        $nombre = $datos['nombres'];
-        $apellidos = $datos['apellidos'];
-        $especialidad = $datos['nombreEspecialidad'];
-        ?>
-        <tr>
-            <td>echo $id_del;</td>
-            <td>echo $nombre;</td>
-            <td>echo $apellidos;</td>
-            <td>echo $especialidad;</td>
-        </tr>
-      
-        <?
-    }
-    ?>
-</table>
-</body>
-</html>
-          
+ <body>
+     <!-- Data -->
+     <div>
+       <form action="" method="post">
+         <table class="table">
+           <thead class="thead-dark">
+             <tr>
+             <th scope="col">#</th>
+               <th scope="col">Nombre</th>
+               <th scope="col">Apellido</th>
+               <th scope="col">Telefono</th>
+               <th scope="col">Fecha de Nacimiento</th>
+               <th scope="col">Sexo</th>
+               <th scope="col">Dui</th>
+               <th scope="col">Nit</th>
+               <th scope="col">Dirección</th>
+               <th scope="col">Convocatoria</th>
+             </tr>
+           <tbody>
+
+             <?php
+              $consulta = $conn->busquedaFree("SELECT
+              `participante`.`idParticipante`
+              , `participante`.`nombres`
+              , `participante`.`apellidos`
+              , `participante`.`fechaNacimiento`
+              , `participante`.`sexo`
+              , `participante`.`dui`
+              , `participante`.`nit`
+              , `participante`.`direccion`
+              , `convocatoria`.`nombreConvocatoria`
+          FROM
+              `dawproyecto`.`participante`
+              INNER JOIN `dawproyecto`.`convocatoria` 
+                  ON (`participante`.`idConvocatoria` = `convocatoria`.`idConvocatoria`);
+");
+              foreach ($consulta as $datos) {
+                $id = $datos['idParticipante'];
+                $nombre = $datos["nombres"];
+                $apellido = $datos['apellidos'];
+                $fecha = $datos['fechaNacimiento'];
+                $sexo = $datos['sexo'];
+                $dui = $datos['dui'];
+                $nit = $datos['nit'];
+                $direccion = $datos['direccion'];
+                $convocatoria = $datos['nombreConvocatoria'];
+            
+                echo " <tr>
+          <td>$id</td>
+          <td>$nombre</td>
+          <td>$apellido</td>
+          <td>$fecha</td>
+          <td>$sexo</td>
+          <td>$dui</td>
+          <td>$nit</td>
+          <td>$direccion</td>
+          <td>$convocatoria</td>
+          </tr>";
+              }
+              ?>
+           </tbody>
+       </form>
+     </div>
+ </body>
+<script>
+  $( function() {
+    $("#telp").change( function() {
+        if ($(this).val() !== "") {
+            $("#telc").removeAttr("required");
+        }else{
+          $('#telc').prop("required", true);
+        }
+    });
+    $("#telc").change( function() {
+        if ($(this).val() !== "") {
+            $("#telp").removeAttr("required");
+        }else{
+          $('#telp').prop("required", true);
+        }
+    });
+});
+</script>
+ </html>
+            

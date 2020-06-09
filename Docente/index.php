@@ -2,9 +2,8 @@
 @session_start();
 
 include "../Clases/BD.php";
-
 $conn= new baseD();
-$conn->comprobar_sesion($_SESSION['rol']);
+$conn->comprobar_sesion($_SESSION['rol'], $_SERVER["REQUEST_URI"]);
 ?>
 <!doctype html>
 <html lang="es">
@@ -14,10 +13,15 @@ $conn->comprobar_sesion($_SESSION['rol']);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <title>Inicio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 <body>
     <div class="wrapper d-flex align-items-stretch">
@@ -74,12 +78,16 @@ $conn->comprobar_sesion($_SESSION['rol']);
                 </div>
             </nav>
             <h2 class="mb-4"></h2>
+            
             <?php
             if (isset($_GET['x'])) {
                 include($_GET['x']);
             } else {
+                include("../Pagina principal.html");
             }
+
             ?>
+            
         </div>
     </div>
 
