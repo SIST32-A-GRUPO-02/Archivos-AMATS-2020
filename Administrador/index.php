@@ -43,8 +43,11 @@
                         <a href="?x=modulos.php"><span class="material-icons"><img src="../images/icons/modulos.png" alt="">  Módulos</a>
                     </li>
                     <li>
-                        <a href="#"> <span class="material-icons"><img src="../images/icons/notas.png" alt="">  Notas</a>
+                        <a href="?x=notas.php"> <span class="material-icons"><img src="../images/icons/notas.png" alt="">  Notas</a>
                     </li>
+                    </li>
+                    <li>
+                        <a href="?x=usuarios.php"> <span class="material-icons"><img src="../images/icons/usuarios.png" alt="">  Usuarios</a>
                     </li>
                     <li>
                         <a href="#"> <span class="material-icons"><img src="../images/icons/reportes.png" alt="">  Reportes</a>
