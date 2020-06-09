@@ -1,11 +1,6 @@
  <?php
-@session_start();
-
-
-
-$conn= new baseD();
-$conn->comprobar_sesion($_SESSION['rol'], $_SERVER['REQUEST_IRU']);
-?>
+  //include_once("menuAdmi.php");
+  ?>
  <!DOCTYPE html>
  <html>
 

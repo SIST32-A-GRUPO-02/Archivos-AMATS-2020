@@ -1,9 +1,3 @@
-<?php
-@session_start();
-
-
-?>
-
 <!DOCTYPE html>
  <html>
 
@@ -58,7 +52,22 @@
                <?php
                 }
                 ?>
+             </select>
+                <label><b>Curso</b></label>
+             <select name="curso" id="" class="w3-input w3-border">
+               <?php
+                require_once "../Clases/BD.php";
+                $conn = new baseD();
+                $consulta = $conn->busqueda("curso");
 
+                foreach ($consulta as $datos) {
+                  $id = $datos['idCurso'];
+                  $nombre = $datos['nombreCurso'];
+                ?>
+                 <option value="<?php echo $id; ?>"><?php echo $nombre; ?></option>
+                 <?php
+                }
+                ?>
              </select>
              <label><b>DUI</b></label>
              <input class="w3-input w3-border" type="text" placeholder="Escriba el número de DUI" name="dui" required>
@@ -91,6 +100,8 @@
                    <th scope="col">Nombre</th>
                    <th scope="col">Apellido</th>
                    <th scope="col">Convocatoria</th>
+                   <th scope="col">Curso</th>
+
                  </tr>
                </thead>
                <tbody>
@@ -106,12 +117,18 @@
                 `participante`.`dui`,
                 `participante`.`nit`,
                 `participante`.`direccion`,
-                `convocatoria`.`nombreConvocatoria`
+                `convocatoria`.`nombreConvocatoria`,
+                `participantecurso`.`idCurso`
+
               FROM
                 `dawproyecto`.`participante`
                 INNER JOIN `dawproyecto`.`convocatoria`
                   ON (
                     `participante`.`idConvocatoria` = `convocatoria`.`idConvocatoria`
+                  ) 
+                  INNER JOIN `dawproyecto`.`participantecurso`
+                  ON (
+                    `participante`.`idParticipante` = `participantecurso`.`idParticipante`
                   ) 
                   ;
               ");
@@ -121,12 +138,20 @@
                     $nombre = $datos['nombres'];
                     $apellidos = $datos['apellidos'];
                     $convocatoria = $datos['nombreConvocatoria'];
+                    $idcurso = $datos['idCurso'];
                   ?>
                    <tr>
                      <td><input type='radio' value='<?php echo $id_del; ?>' name='id_us' required></td>
                      <td> <?php echo $nombre; ?></td>
                      <td><?php echo $apellidos; ?></td>
                      <td><?php echo $convocatoria; ?></td>
+                  <?php
+                   $consulta_curso = $conn->busquedaFree("SELECT * FROM curso where idCurso = $idcurso");
+                     foreach ($consulta_curso as $datos_curso) {
+                      $curso = $datos_curso['nombreCurso'];
+                      echo '<td>'.$curso.'</td>';
+                     }
+                  ?>                     
                    </tr>
 
                  <?php
@@ -162,6 +187,7 @@
                <th scope="col">Nit</th>
                <th scope="col">Dirección</th>
                <th scope="col">Convocatoria</th>
+               <th scope="col">Curso</th>
              </tr>
            <tbody>
 
@@ -176,7 +202,8 @@
   `participante`.`nit`,
   `participante`.`direccion`,
   `convocatoria`.`nombreConvocatoria`,
-  `telefonoparticipante`.`numeroTelefono`
+  `telefonoparticipante`.`numeroTelefono`,
+  `participantecurso`.`idCurso`
 FROM
   `dawproyecto`.`participante`
   INNER JOIN `dawproyecto`.`convocatoria`
@@ -186,7 +213,11 @@ FROM
     INNER JOIN `dawproyecto`.`telefonoparticipante`
                   ON (
                     `participante`.`idParticipante` = `telefonoparticipante`.`idParticipante`
-                  ) Where idTelefono = 2;
+                  )
+                  INNER JOIN `dawproyecto`.`participantecurso`
+                  ON (
+                    `participante`.`idParticipante` = `participantecurso`.`idParticipante`
+                  )  Where idTelefono = 2;
 ");
               foreach ($consulta as $datos) {
                 $id = $datos['idParticipante'];
@@ -199,6 +230,7 @@ FROM
                 $direccion = $datos['direccion'];
                 $convocatoria = $datos['nombreConvocatoria'];
                 $telefono = $datos['numeroTelefono'];
+                $curso = $datos['idCurso'];
                 echo " <tr>
           <td>$nombre</td>
           <td>$apellido</td>
@@ -208,8 +240,13 @@ FROM
           <td>$dui</td>
           <td>$nit</td>
           <td>$direccion</td>
-          <td>$convocatoria</td>
-        </tr>";
+          <td>$convocatoria</td>";
+          $consulta_curso = $conn->busquedaFree("SELECT * FROM curso where idCurso = $curso");
+          foreach ($consulta_curso as $datos_curso) {
+           $curso = $datos_curso['nombreCurso'];
+           echo '<td>'.$curso.'</td>';
+          }
+        echo "</tr>";
               }
 
               ?>
