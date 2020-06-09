@@ -55,7 +55,7 @@ if (isset($_POST['send_insert'])) {
     <div id="id01" class="w3-modal">
       <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:700px">
         <div class="w3-center"><br>
-          <a href="index.php?x=evaluaciones.php"> <span class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span></a>
+          <a href="index.php?x=modulos.php"> <span class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span></a>
           <p>Actualizar modulos</p>
         </div>
         <form class="w3-container" method="post" action="">
@@ -148,7 +148,7 @@ if (isset($_POST['send_insert'])) {
   $consulta = $conn->actualizar("modulo","nombreModulo='$nombreMod',descripcionModulo='$descripcionModulo',horasModulo='$horasModulo',idDocente='$nombreDocente',idCurso='$nombreCurso'","idModulo='$id_update'");
   //Mensaje de UPDATE a DB(No valida si la consulta fue exitosa)
   echo '<script>alert("Registro ACTUALIZADO con exito");</script>';
-  //Redirección a interfaz de EVALUACIONES(NO usar header de PHP, ya que da problemas de CORS(Cabeceras) en HOSTING) 
+  //Redirección a interfaz de MODULOS(NO usar header de PHP, ya que da problemas de CORS(Cabeceras) en HOSTING) 
   echo " <script>window.location.replace('./index.php?x=modulos.php')</script>";
 
 

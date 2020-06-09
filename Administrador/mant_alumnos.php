@@ -224,13 +224,6 @@ if (isset($_POST['send_insert'])) {
             $('#telc').prop("required", true);
           }
         });
-        $("#telc").change(function() {
-          if ($(this).val() !== "") {
-            $("#telp").removeAttr("required");
-          } else {
-            $('#telp').prop("required", true);
-          }
-        });
       });
     </script>
     <!-- FIN del MODAL -->

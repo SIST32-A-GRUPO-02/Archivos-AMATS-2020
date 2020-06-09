@@ -26,23 +26,6 @@
              <input class="w3-input w3-border " type="text" placeholder="Escriba el usuario" name="usuario" required>
              <label><b>Contraseña</b></label>
              <input class="w3-input w3-border" type="text" placeholder="1234" name="contraseña" required>
-             <label><b>Rol</b></label>
-             <select name="rol" id="" class="w3-input w3-border">
-               <?php
-                require_once "../Clases/BD.php";
-                $conn = new baseD();
-                $consulta = $conn->busqueda("rol");
-
-                foreach ($consulta as $datos) {
-                  $id = $datos['idRol'];
-                  $nombreRol = $datos['nombreRol'];
-                ?>
-                 <option value="<?php echo $id; ?>"><?php echo $nombreRol; ?></option>
-                
-                 <?php
-                }
-                ?>
-             </select>
              <label><b>Seleccione el Tipo (Docente o Alumno)</b></label>
              <select name="tipo" id="tipo" class="w3-input w3-border">
                  <option value="1" selected>Alumno</option>
@@ -57,7 +40,7 @@
                 $consulta = $conn->busqueda("participante");
 
                 foreach ($consulta as $datos) {
-                  $id = $datos['idparticipante'];
+                  $id = $datos['idParticipante'];
                   $nombreParticipante = $datos['nombres'];
                   $apellidoParticipante = $datos['apellidos'];
 
