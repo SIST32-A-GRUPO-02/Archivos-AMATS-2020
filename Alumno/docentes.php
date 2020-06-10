@@ -14,10 +14,13 @@
  </head>
 
  <body>
- 
 <h3>Docentes</h3><br>
      <!-- Data -->
      <div>
+     <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form><br>
        <form action="" method="post">
          <table class="table">
            <thead class="thead-dark">
@@ -27,7 +30,6 @@
                <th scope="col">Especialidad</th>
              </tr>
            <tbody>
-
              <?php
               $consulta = $conn->busquedaFree("SELECT
   `docente`.`idDocente`,

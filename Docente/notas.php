@@ -1,6 +1,8 @@
+<?php 
+@session_start();
+?>
 <!DOCTYPE html>
  <html>
-
  <head>
    <title>Notas</title>
  </head>
@@ -11,6 +13,9 @@
   .select:hover{
     background-color: #C9C9C9 ;
     color: #000000 ;
+  }
+  .alineacion{
+    text-align: left;
   }
 </style>
  <body>
@@ -92,10 +97,13 @@
        </div>
      </div>
     
-  
-
      <!-- Data -->
-     <div>
+     <div><br><br>
+     <div class="alineacion"><form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form></div>
+     <br>
        <form action="" method="post">
          <table class="table">
            <thead class="thead-dark">
@@ -113,7 +121,7 @@
                INNER JOIN participantecurso ON nota.idParticipanteCurso = participantecurso.idParticipanteCurso 
                INNER JOIN participante ON participantecurso.idParticipante = participante.idParticipante
              INNER JOIN evaluaciones ON nota.idEvaluaciones = evaluaciones.idEvaluaciones
-             INNER JOIN modulo ON nota.idModulo = modulo.idModulo");
+             INNER JOIN modulo ON nota.idModulo = modulo.idModulo;");
 
                foreach ($consulta_notas as $datos_notas) {
                  $id_del = $datos_notas['idnota'];
