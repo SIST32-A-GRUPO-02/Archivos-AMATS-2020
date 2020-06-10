@@ -8286,3 +8286,7 @@ a[data-toggle="collapse"] {
 
 .footer p {
   color: rgba(255, 255, 255, 0.5); }
+  .select:hover{
+    background-color: #C9C9C9 ;
+    color: #000000 ;
+  }

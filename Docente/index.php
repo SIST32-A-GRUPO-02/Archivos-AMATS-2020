@@ -3,7 +3,7 @@
 
 include "../Clases/BD.php";
 $conn= new baseD();
-$conn->comprobar_sesion($_SESSION['rol'], $_SERVER["REQUEST_URI"]);
+
 ?>
 <!doctype html>
 <html lang="es">
