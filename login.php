@@ -17,7 +17,7 @@
     <form method="post" action="login.php">
       <input type="text" name="usuario" placeholder="Usuario" required="required" />
       <input type="password" name="clave" placeholder="Contraseña" required="required" />
-      <button type="submit" name="sesion" class="btn btn-primary btn-block btn-large">Entrar</button>
+      <button type="submit" name="submit" class="btn btn-primary btn-block btn-large">Entrar</button>
 
     </form>
   </div>
@@ -40,7 +40,7 @@ if(isset($_SESSION['rol'])){
   header("location: index.php");
 }
 else{
-  if (isset($_POST['sesion'])) {
+  if (isset($_POST['submit'])) {
     $usuario = $_POST['usuario'];
     $clave = $_POST['clave'];
     $resultado = $conn->busquedaFree("SELECT * FROM usuarios where usuario='$usuario' AND contra='$clave' LIMIT 1");

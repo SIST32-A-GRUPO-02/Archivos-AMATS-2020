@@ -7,6 +7,12 @@ $conn= new baseD();
 
  <head>
    <title>Evaluaciones</title>
+   <style>
+  td, th{
+    text-align: center;
+  }
+  
+</style>
  </head>
 
  <body>
@@ -14,6 +20,10 @@ $conn= new baseD();
 
      <!-- Data -->
      <div>
+     <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form><br>
        <form action="" method="post">
          <table class="table">
            <thead class="thead-dark">
@@ -45,7 +55,7 @@ $conn= new baseD();
                 $porcentaje = $datos['porcentaje'];
                 $modulo =$datos['idModulo'];
 
-                echo " <tr>
+                echo " <tr class='select'>
           <td>$nombre</td>
           <td>$porcentaje</td>
           <td>$modulo</td>";

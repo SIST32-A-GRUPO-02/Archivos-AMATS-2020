@@ -1,3 +1,11 @@
+<?php 
+@session_start();
+if(isset($_SESSION['rol'])){
+    if($_SESSION['rol']!=1){
+        header("location: ../index.php");
+    }
+    else{
+?>
 <!doctype html>
 <html lang="en">
 
@@ -75,19 +83,23 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Ayuda</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Sesión</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b><?php echo strtoupper($_SESSION['Nombre']);?> &nbsp</b></a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="../cerrar.php">Cerrar</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <h2 class="mb-4">Control de notas para centro técnico</h2>
+            <h2 class="mb-4"></h2>
             <?php
             if (isset($_GET['x'])) {
                 include($_GET['x']);
             } else {
+                include "../Pagina principal.html";
             }
 
             ?>
@@ -103,3 +115,10 @@
 </body>
 
 </html>
+<?php 
+    }
+}
+else{
+    header("location: ../index.php");
+}
+?>

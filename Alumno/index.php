@@ -2,7 +2,12 @@
 @session_start();
 include "../Clases/BD.php";
 $conn= new baseD(); 
-$conn->comprobar_sesion($_SESSION['rol'], $_SERVER['REQUEST_URI']);
+if(isset($_SESSION['rol'])){
+    if($_SESSION['rol']!=3){
+        header("location: ../index.php");
+    }
+    else{
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -80,10 +85,16 @@ $conn->comprobar_sesion($_SESSION['rol'], $_SERVER['REQUEST_URI']);
             ?>
         </div>
     </div>
-
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>
+<?php 
+    }
+}
+else{
+    header("location: ../login.php");
+}
+?>

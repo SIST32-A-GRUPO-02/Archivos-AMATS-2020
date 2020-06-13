@@ -19,6 +19,10 @@ else{
  <body>
      <!-- Data -->
      <div>
+     <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form><br>
        <form action="" method="post">
          <table class="table">
            <thead class="thead-dark">
@@ -26,12 +30,8 @@ else{
              <th scope="col">#</th>
                <th scope="col">Nombre</th>
                <th scope="col">Apellido</th>
-               <th scope="col">Telefono</th>
                <th scope="col">Fecha de Nacimiento</th>
                <th scope="col">Sexo</th>
-               <th scope="col">Dui</th>
-               <th scope="col">Nit</th>
-               <th scope="col">Dirección</th>
                <th scope="col">Convocatoria</th>
              </tr>
            <tbody>
@@ -63,15 +63,12 @@ else{
                 $direccion = $datos['direccion'];
                 $convocatoria = $datos['nombreConvocatoria'];
             
-                echo " <tr>
+                echo " <tr class='select'>
           <td>$id</td>
           <td>$nombre</td>
           <td>$apellido</td>
           <td>$fecha</td>
           <td>$sexo</td>
-          <td>$dui</td>
-          <td>$nit</td>
-          <td>$direccion</td>
           <td>$convocatoria</td>
           </tr>";
               }
