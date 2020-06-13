@@ -2,6 +2,11 @@
 @session_start();
 include "../Clases/BD.php";
 $conn= new baseD(); 
+if(isset($_SESSION['rol'])){
+    if($_SESSION['rol']!=3){
+        header("location: ../index.php");
+    }
+    else{
 
 ?>
 <!doctype html>
@@ -86,3 +91,10 @@ $conn= new baseD();
     <script src="../js/main.js"></script>
 </body>
 </html>
+<?php 
+    }
+}
+else{
+    header("location: ../login.php");
+}
+?>

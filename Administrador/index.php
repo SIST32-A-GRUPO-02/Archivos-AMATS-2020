@@ -1,5 +1,10 @@
 <?php 
 @session_start();
+if(isset($_SESSION['rol'])){
+    if($_SESSION['rol']!=1){
+        header("location: ../index.php");
+    }
+    else{
 ?>
 <!doctype html>
 <html lang="en">
@@ -113,3 +118,10 @@
 </body>
 
 </html>
+<?php 
+    }
+}
+else{
+    header("location: ../index.php");
+}
+?>
