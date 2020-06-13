@@ -8,8 +8,9 @@
  <body>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
-     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-info" >Mantenimiento</button>
-
+     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
+     <a href="../pdf/alumnospdf.php" class="btn btn-danger">Reportes</a>
+     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-info" >Buscar</a>
    </div>
 
    <!-- Inicio Modal -->

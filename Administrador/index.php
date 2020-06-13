@@ -49,9 +49,6 @@
                     <li>
                         <a href="?x=usuarios.php"> <span class="material-icons"><img src="../images/icons/usuarios.png" alt="">  Usuarios</a>
                     </li>
-                    <li>
-                        <a href="#"> <span class="material-icons"><img src="../images/icons/reportes.png" alt="">  Reportes</a>
-                    </li>
                 </ul>
             </div>
         </nav>
