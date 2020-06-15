@@ -6,13 +6,16 @@
  </head>
 
  <body>
+   <h2>Alumnos</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
      <a href="../pdf/alumnospdf.php" class="btn btn-danger">Reportes</a>
-     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-info" >Buscar</a>
-   </div>
-
+   </div><br>
+   <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form><br>
    <!-- Inicio Modal -->
    <div class="w3-container">
      <div id="id01" class="w3-modal">
@@ -232,7 +235,7 @@ FROM
                 $convocatoria = $datos['nombreConvocatoria'];
                 $telefono = $datos['numeroTelefono'];
                 $curso = $datos['idCurso'];
-                echo " <tr>
+                echo " <tr class='select'>
           <td>$nombre</td>
           <td>$apellido</td>
           <td>$telefono</td>

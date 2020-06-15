@@ -37,9 +37,6 @@ if(isset($_SESSION['rol'])){
                     </li>
                     <li><a href="?x=docentes.php"> <span class="material-icons"><img src="../images/icons/docentes.png" alt=""></span>  Docentes</a>
                     </li>
-                    <li>
-                        <a href="?x=reportes.php"> <span class="material-icons"><img src="../images/icons/reportes.png" alt="">  Reportes</a>
-                    </li>
            </ul>
             </div>
         </nav>

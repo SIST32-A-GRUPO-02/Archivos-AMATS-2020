@@ -59,6 +59,7 @@ else{
         `nombres`, `apellidos` FROM `dawproyecto`.`docente` WHERE idDocente=$docen LIMIT 1;");
       }
       elseif($participante==true){
+        $_SESSION['id']=$participante;
         $nombreusu=$conn->busquedaFree("SELECT `nombres`, `apellidos` FROM `dawproyecto`.`participante` WHERE idParticipante=$participante LIMIT 1;");
       }
       foreach ($nombreusu as $value) {

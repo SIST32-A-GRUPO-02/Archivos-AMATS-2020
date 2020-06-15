@@ -19,10 +19,10 @@
   }
 </style>
  <body>
-   <div style="margin-bottom: 5px; margin-left:16px;">
+    <h2>Notas</h2>
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
-   </div>
-
+   <a href="../pdf/D_notaspdf.php" class="btn btn-danger">Reportes</a>
+ 
    <!-- Inicio Modal -->
    <div class="w3-container">
      <div id="id01" class="w3-modal">
@@ -98,11 +98,6 @@
      </div>
     
      <!-- Data -->
-     <div><br><br>
-     <div class="alineacion"><form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-  </form></div>
      <br>
        <form action="" method="post">
          <table class="table">

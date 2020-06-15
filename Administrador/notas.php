@@ -6,6 +6,7 @@
  </head>
 
  <body>
+   <h2>Notas</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
@@ -179,7 +180,7 @@
                  $participante = $datos_notas['nombres'];
                  $apellidosparticipante = $datos_notas['apellidos'];
 
-                echo " <tr>
+                echo " <tr class='select'>
           <td>$nombre</td>
           <td>$nombreEvaluacion</td>
           <td>$participante $apellidoParticipante</td>

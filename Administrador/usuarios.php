@@ -6,6 +6,7 @@
  </head>
 
  <body>
+   <h2>Usuarios</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
@@ -252,7 +253,7 @@
                     $apellidoParticipante = $datos['apellidos'];
                    
                   ?>
-                   <tr>
+                   <tr class='select'>
                      <td> <?php echo $usuario; ?></td>
                      <td><?php echo $rol; ?></td>
                      <td><?php echo $nombreParticipante ." ". $apellidoParticipante; ?></td>
@@ -268,7 +269,7 @@
                     $nombreDocente = $datos['nombres'];
                     $apellidoDocente = $datos['apellidos'];
                   ?>
-                   <tr>
+                   <tr class='select'>
                      <td> <?php echo $usuario; ?></td>
                      <td><?php echo $rol; ?></td>
                      <td><?php echo $nombreDocente ." ".$apellidoDocente; ?></td>

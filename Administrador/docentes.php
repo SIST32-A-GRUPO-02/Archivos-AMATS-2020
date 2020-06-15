@@ -9,6 +9,7 @@
  </head>
 
  <body>
+   <h2>Docentes</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
@@ -187,7 +188,7 @@ FROM
                 $nit = $datos['nit'];
                 $direccion = $datos['direccion'];
                 $especialidad = $datos['nombreEspecialidad'];
-                echo " <tr>
+                echo " <tr class='select'>
           <td>$nombre</td>
           <td>$apellido</td>
           <td>$fecha</td>

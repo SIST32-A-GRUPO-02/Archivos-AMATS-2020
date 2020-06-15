@@ -6,6 +6,7 @@
  </head>
 
  <body>
+   <h2>Convocatorias</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
@@ -171,7 +172,7 @@ FROM
                 $estado = $datos['estado'];
                 $sede =$datos['departamento'];
 
-                echo " <tr>
+                echo " <tr class='select'>
           <td>$nombre</td>
           <td>$fechai</td>
           <td>$fechaf</td>

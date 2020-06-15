@@ -6,6 +6,7 @@
  </head>
 
  <body>
+   <h2>Evaluaciones</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
@@ -150,7 +151,7 @@
                 $porcentaje = $datos['porcentaje'];
                 $modulo =$datos['idModulo'];
 
-                echo " <tr>
+                echo " <tr class='select'>
           <td>$nombre</td>
           <td>$porcentaje</td>
           <td>$modulo</td>";
