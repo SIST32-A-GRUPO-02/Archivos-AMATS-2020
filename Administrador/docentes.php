@@ -12,9 +12,14 @@
    <h2>Docentes</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
-     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
+     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary">Mantenimiento</button>
      <a href="../pdf/docentespdf.php" class="btn btn-danger">Reportes</a>
-     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-info" >Buscar</a>
+     <div style="float: right; margin-right:40px;">
+       <form action="" method="post">
+         <input type="text" style="border-radius: 5px;" name="busqueda" required>
+         <input type="submit" value="Buscar" class="btn btn-info" name="send_busqueda"></input>
+       </form>
+     </div>
    </div>
 
    <!-- Inicio Modal -->
@@ -71,7 +76,7 @@
          </div>
        </div>
      </div>
-    
+
      <!--  Modal 3 -->
      <div id="id03" class="w3-modal">
        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:700px">
@@ -161,43 +166,127 @@
            <tbody>
 
              <?php
-              $consulta = $conn->busquedaFree("SELECT
-  `docente`.`idDocente`,
-  `docente`.`nombres`,
-  `docente`.`apellidos`,
-  `docente`.`fechaNacimiento`,
-  `docente`.`sexo`,
-  `docente`.`dui`,
-  `docente`.`nit`,
-  `docente`.`direccion`,
-  `especialidad`.`nombreEspecialidad`
-FROM
-  `dawproyecto`.`docente`
-  INNER JOIN `dawproyecto`.`especialidad`
-    ON (
-      `docente`.`idEspecialidad` = `especialidad`.`idEspecialidad`
-    );
-");
-              foreach ($consulta as $datos) {
-                $id = $datos['idDocente'];
-                $nombre = $datos["nombres"];
-                $apellido = $datos['apellidos'];
-                $fecha = $datos['fechaNacimiento'];
-                $sexo = $datos['sexo'];
-                $dui = $datos['dui'];
-                $nit = $datos['nit'];
-                $direccion = $datos['direccion'];
-                $especialidad = $datos['nombreEspecialidad'];
-                echo " <tr class='select'>
-          <td>$nombre</td>
-          <td>$apellido</td>
-          <td>$fecha</td>
-          <td>$sexo</td>
-          <td>$dui</td>
-          <td>$nit</td>
-          <td>$direccion</td>
-          <td>$especialidad</td>
-        </tr>";
+              if (isset($_POST['send_busqueda'])) {
+                $busqueda = $_POST['busqueda'];
+                if (strpos($busqueda, '-')) {
+                  $consulta = $conn->busquedaFree("SELECT
+                              `docente`.`idDocente`,
+                              `docente`.`nombres`,
+                              `docente`.`apellidos`,
+                              `docente`.`fechaNacimiento`,
+                              `docente`.`sexo`,
+                              `docente`.`dui`,
+                              `docente`.`nit`,
+                              `docente`.`direccion`,
+                              `especialidad`.`nombreEspecialidad`
+                            FROM
+                              `dawproyecto`.`docente`
+                              INNER JOIN `dawproyecto`.`especialidad`
+                                ON (
+                                  `docente`.`idEspecialidad` = `especialidad`.`idEspecialidad`
+                                )
+                               WHERE dui = '$busqueda'
+              ");
+                  foreach ($consulta as $datos) {
+                    $id = $datos['idDocente'];
+                    $nombre = $datos["nombres"];
+                    $apellido = $datos['apellidos'];
+                    $fecha = $datos['fechaNacimiento'];
+                    $sexo = $datos['sexo'];
+                    $dui = $datos['dui'];
+                    $nit = $datos['nit'];
+                    $direccion = $datos['direccion'];
+                    $especialidad = $datos['nombreEspecialidad'];
+                    echo " <tr>
+                <td>$nombre</td>
+                <td>$apellido</td>
+                <td>$fecha</td>
+                <td>$sexo</td>
+                <td>$dui</td>
+                <td>$nit</td>
+                <td>$direccion</td>
+                <td>$especialidad</td>
+                </tr>";
+                  }
+                } else {
+                  $consulta = $conn->busquedaFree("SELECT
+                              `docente`.`idDocente`,
+                              `docente`.`nombres`,
+                              `docente`.`apellidos`,
+                              `docente`.`fechaNacimiento`,
+                              `docente`.`sexo`,
+                              `docente`.`dui`,
+                              `docente`.`nit`,
+                              `docente`.`direccion`,
+                              `especialidad`.`nombreEspecialidad`
+                            FROM
+                              `dawproyecto`.`docente`
+                              INNER JOIN `dawproyecto`.`especialidad`
+                                ON (
+                                  `docente`.`idEspecialidad` = `especialidad`.`idEspecialidad`
+                                )
+                               WHERE nombres  LIKE '%$busqueda%'");
+                  foreach ($consulta as $datos) {
+                    $id = $datos['idDocente'];
+                    $nombre = $datos["nombres"];
+                    $apellido = $datos['apellidos'];
+                    $fecha = $datos['fechaNacimiento'];
+                    $sexo = $datos['sexo'];
+                    $dui = $datos['dui'];
+                    $nit = $datos['nit'];
+                    $direccion = $datos['direccion'];
+                    $especialidad = $datos['nombreEspecialidad'];
+                    echo " <tr>
+                <td>$nombre</td>
+                <td>$apellido</td>
+                <td>$fecha</td>
+                <td>$sexo</td>
+                <td>$dui</td>
+                <td>$nit</td>
+                <td>$direccion</td>
+                <td>$especialidad</td>
+                </tr>";
+                  }
+                }
+              } else {
+                $consulta = $conn->busquedaFree("SELECT
+                `docente`.`idDocente`,
+                `docente`.`nombres`,
+                `docente`.`apellidos`,
+                `docente`.`fechaNacimiento`,
+                `docente`.`sexo`,
+                `docente`.`dui`,
+                `docente`.`nit`,
+                `docente`.`direccion`,
+                `especialidad`.`nombreEspecialidad`
+              FROM
+                `dawproyecto`.`docente`
+                INNER JOIN `dawproyecto`.`especialidad`
+                  ON (
+                    `docente`.`idEspecialidad` = `especialidad`.`idEspecialidad`
+                  );
+              ");
+                foreach ($consulta as $datos) {
+                  $id = $datos['idDocente'];
+                  $nombre = $datos["nombres"];
+                  $apellido = $datos['apellidos'];
+                  $fecha = $datos['fechaNacimiento'];
+                  $sexo = $datos['sexo'];
+                  $dui = $datos['dui'];
+                  $nit = $datos['nit'];
+                  $direccion = $datos['direccion'];
+                  $especialidad = $datos['nombreEspecialidad'];
+                  echo " <tr>
+                <td>$nombre</td>
+                <td>$apellido</td>
+                <td>$fecha</td>
+                <td>$sexo</td>
+                <td>$dui</td>
+                <td>$nit</td>
+                <td>$direccion</td>
+                <td>$especialidad</td>
+                </tr>";
+                }
               }
 
               ?>
