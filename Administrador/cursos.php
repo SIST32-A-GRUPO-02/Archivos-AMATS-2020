@@ -6,7 +6,6 @@
  </head>
 
  <body>
-   <h2>Cursos</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
@@ -139,7 +138,7 @@
                 $nombre = $datos['nombreCurso'];
                 $identificador = $datos['identificador'];
                 $responsable = $datos['responsable'];
-                echo " <tr class='select'>
+                echo " <tr>
                 <td>$nombre</td>
                 <td>$identificador</td>
                 <td>$responsable</td>

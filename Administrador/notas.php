@@ -6,12 +6,16 @@
  </head>
 
  <body>
-   <h2>Notas</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
      <a href="../pdf/notaspdf.php" class="btn btn-danger">Reportes</a>
-     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-info" >Buscar</a>
+     <div style="float: right; margin-right:40px;">
+            <form action="" method="post">
+                <input type="text" style="border-radius: 5px;" name="busqueda" required>
+                <input type="submit" value="Buscar" class="btn btn-info" name="send_busqueda"></input>
+            </form>
+        </div>
    </div>
 
    <!-- Inicio Modal -->
@@ -166,6 +170,34 @@
            <tbody>
 
              <?php
+             if (isset($_POST['send_busqueda'])) {
+              $busqueda = $_POST['busqueda'];
+              if ($busqueda != "") {
+                $consulta_notas = $conn->busquedaFree("SELECT idnota,nota,participante.nombres,participante.apellidos,nombreEvaluacion,nombreModulo FROM nota 
+                INNER JOIN participantecurso ON nota.idParticipanteCurso = participantecurso.idParticipanteCurso 
+                INNER JOIN participante ON participantecurso.idParticipante = participante.idParticipante
+              INNER JOIN evaluaciones ON nota.idEvaluaciones = evaluaciones.idEvaluaciones
+              INNER JOIN modulo ON nota.idModulo = modulo.idModulo
+              WHERE participante.nombres LIKE '%$busqueda%' OR participante.apellidos LIKE '%$busqueda%' 
+              OR nombreModulo LIKE '%$busqueda%' OR nombreEvaluacion LIKE '%$busqueda%' or nota = '$busqueda'");
+ 
+                foreach ($consulta_notas as $datos_notas) {
+                  $id_del = $datos_notas['idnota'];
+                  $nota = $datos_notas['nota'];
+                  $nombre = $datos_notas['nombreModulo'];
+                  $nombreEvaluacion = $datos_notas['nombreEvaluacion'];
+                  $participante = $datos_notas['nombres'];
+                  $apellidoParticipante = $datos_notas['apellidos'];
+ 
+                 echo " <tr>
+               <td>$nombre</td>
+               <td>$nombreEvaluacion</td>
+               <td>$participante $apellidoParticipante</td>
+               <td>$nota</td>";
+               echo "</tr>";
+               }
+              }
+             }else{
                $consulta_notas = $conn->busquedaFree("SELECT idnota,nota,participante.nombres,participante.apellidos,nombreEvaluacion,nombreModulo FROM nota 
                INNER JOIN participantecurso ON nota.idParticipanteCurso = participantecurso.idParticipanteCurso 
                INNER JOIN participante ON participantecurso.idParticipante = participante.idParticipante
@@ -178,16 +210,16 @@
                  $nombre = $datos_notas['nombreModulo'];
                  $nombreEvaluacion = $datos_notas['nombreEvaluacion'];
                  $participante = $datos_notas['nombres'];
-                 $apellidosparticipante = $datos_notas['apellidos'];
+                 $apellidoParticipante = $datos_notas['apellidos'];
 
-                echo " <tr class='select'>
-          <td>$nombre</td>
-          <td>$nombreEvaluacion</td>
-          <td>$participante $apellidoParticipante</td>
-          <td>$nota</td>";
-          echo "</tr>";
+                echo " <tr>
+              <td>$nombre</td>
+              <td>$nombreEvaluacion</td>
+              <td>$participante $apellidoParticipante</td>
+              <td>$nota</td>";
+              echo "</tr>";
               }
-
+            }
               ?>
            </tbody>
          </table>

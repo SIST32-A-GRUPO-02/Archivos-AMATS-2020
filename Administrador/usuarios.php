@@ -6,12 +6,16 @@
  </head>
 
  <body>
-   <h2>Usuarios</h2>
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
      <a href="../pdf/usuariospdf.php" class="btn btn-danger">Reportes</a>
-     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-info" >Buscar</a>
+     <div style="float: right; margin-right:40px;">
+            <form action="" method="post">
+                <input type="text" style="border-radius: 5px;" name="busqueda" required>
+                <input type="submit" value="Buscar" class="btn btn-info" name="send_busqueda"></input>
+            </form>
+        </div>
    </div>
 
    <!-- Inicio Modal -->
@@ -208,25 +212,53 @@
            <tbody>
 
            <?php
-                  $conn = new baseD();
-                  $consulta_usuarios = $conn->busquedaFree("SELECT
-                `usuarios`.`idUsuario`,
-                `usuarios`.`usuario`,
-                `rol`.`nombreRol`,
-                `participante`.`nombres`,
-                `participante`.`apellidos`
-              FROM
-                `dawproyecto`.`usuarios`
-                INNER JOIN `dawproyecto`.`rol`
-                  ON (
-                    `usuarios`.`idRol` = `rol`.`idRol`
-                  ) 
-                INNER JOIN `dawproyecto`.`participante`
-                  ON (
-                    `usuarios`.`idParticipante` = `participante`.`idParticipante`
-                  )   
-                  ;
-              ");
+           if (isset($_POST['send_busqueda'])) {
+            $busqueda = $_POST['busqueda'];
+            if ($busqueda == 'Docente') {
+              $busqueda2 = 1;
+            }elseif ($busqueda == 'Participante') {
+              $busqueda2 = 2;
+            }else{
+              $busqueda2 = $busqueda;
+            }
+            if ($busqueda2 != "") {
+              $consulta_docentes = $conn->busquedaFree("SELECT
+              `usuarios`.`idUsuario`,
+              `usuarios`.`usuario`,
+              `rol`.`nombreRol`,
+              `docente`.`nombres`,
+              `docente`.`apellidos`
+            FROM
+              `dawproyecto`.`usuarios`
+              INNER JOIN `dawproyecto`.`rol`
+                ON (
+                  `usuarios`.`idRol` = `rol`.`idRol`
+                ) 
+                INNER JOIN `dawproyecto`.`docente`
+             ON (
+               `usuarios`.`idDocente` = `docente`.`idDocente`
+             )     
+            Where usuario LIKE '%$busqueda%'  OR rol.nombreRol = '$busqueda'
+            ");
+            
+             foreach ($consulta_docentes as $datos) {
+               $id_del = $datos['idUsuario'];
+               $usuario = $datos['usuario'];
+               $rol = $datos['nombreRol'];
+               $nombreDocente = $datos['nombres'];
+               $apellidoDocente = $datos['apellidos'];
+             ?>
+              <tr>
+                <td> <?php echo $usuario; ?></td>
+                <td><?php echo $rol; ?></td>
+                <td><?php echo $nombreDocente ." ".$apellidoDocente; ?></td>
+
+              </tr>
+            <?php
+             }
+            }
+          }else{
+                  
                    $consulta_docentes = $conn->busquedaFree("SELECT
                    `usuarios`.`idUsuario`,
                    `usuarios`.`usuario`,
@@ -245,23 +277,7 @@
                   )     
                      ;
                  ");
-                  foreach ($consulta_usuarios as $datos) {
-                    $id_del = $datos['idUsuario'];
-                    $usuario = $datos['usuario'];
-                    $rol = $datos['nombreRol'];
-                    $nombreParticipante = $datos['nombres'];
-                    $apellidoParticipante = $datos['apellidos'];
-                   
-                  ?>
-                   <tr class='select'>
-                     <td> <?php echo $usuario; ?></td>
-                     <td><?php echo $rol; ?></td>
-                     <td><?php echo $nombreParticipante ." ". $apellidoParticipante; ?></td>
-
-                   </tr>
-
-                 <?php
-                  }
+                 
                   foreach ($consulta_docentes as $datos) {
                     $id_del = $datos['idUsuario'];
                     $usuario = $datos['usuario'];
@@ -269,15 +285,15 @@
                     $nombreDocente = $datos['nombres'];
                     $apellidoDocente = $datos['apellidos'];
                   ?>
-                   <tr class='select'>
+                   <tr>
                      <td> <?php echo $usuario; ?></td>
                      <td><?php echo $rol; ?></td>
                      <td><?php echo $nombreDocente ." ".$apellidoDocente; ?></td>
 
                    </tr>
-
                  <?php
                   }
+                }
                   ?>
            </tbody>
          </table>

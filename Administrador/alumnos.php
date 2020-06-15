@@ -373,7 +373,7 @@ FROM
                 $convocatoria = $datos['nombreConvocatoria'];
                 $telefono = $datos['numeroTelefono'];
                 $curso = $datos['idCurso'];
-                echo " <tr class='select'>
+                echo " <tr>
           <td>$nombre</td>
           <td>$apellido</td>
           <td>$telefono</td>

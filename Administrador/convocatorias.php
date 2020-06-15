@@ -220,7 +220,7 @@ FROM
                 $estado = $datos['estado'];
                 $sede = $datos['departamento'];
 
-                echo " <tr class='select'>
+                echo " <tr>
           <td>$nombre</td>
           <td>$fechai</td>
           <td>$fechaf</td>
