@@ -3,7 +3,7 @@
 include "../Clases/BD.php";
 $conn= new baseD(); 
 if(isset($_SESSION['rol'])){
-    if($_SESSION['rol']!=3){
+    if($_SESSION['rol']!=2){
         header("location: ../index.php");
     }
     else{

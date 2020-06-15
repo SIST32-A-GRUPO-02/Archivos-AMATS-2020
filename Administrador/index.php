@@ -1,3 +1,14 @@
+<?php
+@session_start();
+
+include "../Clases/BD.php";
+$conn= new baseD();
+if(isset($_SESSION['rol'])){
+    if($_SESSION['rol']!=3){
+        header("location: ../index.php");
+    }
+    else{
+?>
 <!doctype html>
 <html lang="en">
 
@@ -66,18 +77,20 @@
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
-
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Inicio</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./index.php">Inicio</a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Ayuda</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Sesión</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b><?php echo strtoupper($_SESSION['Nombre']);?> &nbsp</b></a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="../cerrar.php">Cerrar</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -104,3 +117,11 @@
 </body>
 
 </html>
+
+<?php
+       }
+    }
+    else{
+        header("location: ../login.php");
+    }
+?>

@@ -6,13 +6,13 @@ $conn= new baseD();
 if(isset($_SESSION['rol'])){
   switch ($_SESSION['rol']) {
     case 1:
-       header("location: Administrador/index.php");
+       header("location: Docente/index.php");
      break;
       case 2:
-         header("location: Docente/index.php");
+         header("location: Alumno/index.php");
        break;
     case 3:
-       header("location: Alumno/index.php");
+       header("location: Administrador/index.php");
      break;
    }
   }

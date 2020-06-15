@@ -12,15 +12,14 @@ if (isset($_POST['send_insert'])) {
   $participante = $_POST['participante'];
   $docente = $_POST['docente'];
   //If para saber si vienen datos de docente o participante
-  if($docente == ""){
+  if($rol != 1){
   //Inicio de consulta SQL, datos requerido por la función insetar(tabla,datos)
   $conn->insertar(
     "usuarios(usuario,contra,idRol,idParticipante)",
     "'$usuario','$contra','$rol','$participante'");
   }else{
   //Inicio de consulta SQL, datos requerido por la función insetar(tabla,datos)
-  $conn->insertar(
-    "usuarios(usuario, contra, idRol, idDocente)",
+  $conn->insertar("usuarios(usuario, contra, idRol, idDocente)",
     "'$usuario','$contra','$rol','$docente'");
   }
  
