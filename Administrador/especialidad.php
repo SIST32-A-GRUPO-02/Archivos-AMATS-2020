@@ -10,7 +10,12 @@
         <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
         <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary">Mantenimiento</button>
         <a href="../pdf/especialidadpdf.php" class="btn btn-danger">Reportes</a>
-     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-info" >Buscar</a>
+        <div style="float: right; margin-right:40px;">
+            <form action="" method="post">
+                <input type="text" style="border-radius: 5px;" name="busqueda" required>
+                <input type="submit" value="Buscar" class="btn btn-info" name="send_busqueda"></input>
+            </form>
+        </div>
     </div>
 
     <!-- Inicio Modal -->
@@ -56,25 +61,21 @@
                             <tbody>
 
                                 <?php
-                              require_once "../Clases/BD.php";
-                              $da = 1;
-                              $conn = new baseD();
-                              $consulta = $conn->busquedaFree("SELECT
-      
-                      `especialidad`.`idEspecialidad`,
-                      `especialidad`.`nombreEspecialidad`
-                      FROM  `dawproyecto`.`especialidad`;");
-      
-                              foreach ($consulta as $datos) {
-      
-                                  $id_del = $datos['idEspecialidad'];
-                                  $nombre = $datos['nombreEspecialidad'];
+                                require_once "../Clases/BD.php";
+                                $da = 1;
+                                $conn = new baseD();
+                                $consulta = $conn->busquedaFree("SELECT
+                                `especialidad`.`idEspecialidad`,
+                                `especialidad`.`nombreEspecialidad`
+                                FROM  `dawproyecto`.`especialidad`;");
+                                foreach ($consulta as $datos) {
+                                    $id_del = $datos['idEspecialidad'];
+                                    $nombre = $datos['nombreEspecialidad'];
                                 ?>
                                     <tr>
                                         <td><input type='radio' value='<?php echo $id_del; ?>' name='id_us' required></td>
                                         <td> <?php echo $nombre; ?></td>
                                     </tr>
-
                                 <?php
                                 }
                                 ?>
@@ -107,26 +108,42 @@
                     <tbody>
 
                         <?php
-                        require_once "../Clases/BD.php";
                         $da = 1;
-                        $conn = new baseD();
-                        $consulta = $conn->busquedaFree("SELECT
-
+                        if (isset($_POST['send_busqueda'])) {
+                            $busqueda = $_POST['busqueda'];
+                            if ($busqueda != "") {
+                                $consulta = $conn->busquedaFree("SELECT
+                                `especialidad`.`idEspecialidad`,
+                                `especialidad`.`nombreEspecialidad`
+                                FROM  `dawproyecto`.`especialidad`
+                                WHERE nombreEspecialidad LIKE '%$busqueda%'");
+                                            foreach ($consulta as $datos) {
+                
+                                                $id = $datos['idEspecialidad'];
+                                                $nombre = $datos['nombreEspecialidad'];
+                                                echo " <tr>
+                                <td>$da</td>
+                                <td>$nombre</td>
+                               </tr>";
+                                                $da++;
+                                            }
+                            }
+                        } else {
+                            $consulta = $conn->busquedaFree("SELECT
                 `especialidad`.`idEspecialidad`,
                 `especialidad`.`nombreEspecialidad`
                 FROM  `dawproyecto`.`especialidad`;");
+                            foreach ($consulta as $datos) {
 
-                        foreach ($consulta as $datos) {
-
-                            $id = $datos['idEspecialidad'];
-                            $nombre = $datos['nombreEspecialidad'];
-                            echo " <tr>
+                                $id = $datos['idEspecialidad'];
+                                $nombre = $datos['nombreEspecialidad'];
+                                echo " <tr>
                 <td>$da</td>
                 <td>$nombre</td>
                </tr>";
-                            $da++;
+                                $da++;
+                            }
                         }
-
                         ?>
                     </tbody>
             </form>

@@ -10,7 +10,12 @@
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
      <a href="../pdf/cursospdf.php" class="btn btn-danger">Reportes</a>
-     <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-info" >Buscar</a>
+     <div style="float: right; margin-right:40px;">
+      <form action="" method="post">
+        <input type="text" style="border-radius: 5px;" name="busqueda" required>
+        <input type="submit" value="Buscar" class="btn btn-info" name="send_busqueda"></input>
+      </form>
+    </div>
    </div>
 
    <!-- Inicio Modal -->
@@ -116,18 +121,19 @@
            <tbody>
 
              <?php
-             require_once "../Clases/BD.php";
-             $conn = new baseD();
-              $consulta = $conn->busquedaFree("SELECT
+              if (isset($_POST['send_busqueda'])) {
+                $busqueda = $_POST['busqueda'];
+                if($busqueda != "") {
+                  $consulta = $conn->busquedaFree("SELECT
 
                 `curso`.`idCurso`,
                 `curso`.`nombreCurso`,
                 `curso`.`identificador`,
                 `curso`.`responsable`
-FROM
-  `dawproyecto`.`curso`;
-");
-              foreach ($consulta as $datos) {
+            FROM
+              `dawproyecto`.`curso`
+              WHERE nombreCurso like '%$busqueda%' OR responsable LIKE '%$busqueda%'");
+               foreach ($consulta as $datos) {
                 $id = $datos['idCurso'];
                 $nombre = $datos['nombreCurso'];
                 $identificador = $datos['identificador'];
@@ -139,6 +145,29 @@ FROM
         </tr>";
               }
 
+                
+              }
+            }else{
+              $consulta = $conn->busquedaFree("SELECT
+
+                `curso`.`idCurso`,
+                `curso`.`nombreCurso`,
+                `curso`.`identificador`,
+                `curso`.`responsable`
+            FROM
+              `dawproyecto`.`curso`");
+               foreach ($consulta as $datos) {
+                $id = $datos['idCurso'];
+                $nombre = $datos['nombreCurso'];
+                $identificador = $datos['identificador'];
+                $responsable = $datos['responsable'];
+                echo " <tr>
+                <td>$nombre</td>
+                <td>$identificador</td>
+                <td>$responsable</td>
+        </tr>";
+              }
+            }
               ?>
            </tbody>
        </form>

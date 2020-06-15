@@ -1,11 +1,3 @@
-<?php 
-@session_start();
-if(isset($_SESSION['rol'])){
-    if($_SESSION['rol']!=1){
-        header("location: ../index.php");
-    }
-    else{
-?>
 <!doctype html>
 <html lang="en">
 
@@ -18,7 +10,8 @@ if(isset($_SESSION['rol'])){
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -83,23 +76,19 @@ if(isset($_SESSION['rol'])){
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Ayuda</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><b><?php echo strtoupper($_SESSION['Nombre']);?> &nbsp</b></a>
-                                <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../cerrar.php">Cerrar</a>
-                                </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sesión</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <h2 class="mb-4"></h2>
+            <h2 class="mb-4">Control de notas para centro técnico</h2>
             <?php
             if (isset($_GET['x'])) {
                 include($_GET['x']);
             } else {
-                include "../Pagina principal.html";
             }
 
             ?>
@@ -115,10 +104,3 @@ if(isset($_SESSION['rol'])){
 </body>
 
 </html>
-<?php 
-    }
-}
-else{
-    header("location: ../index.php");
-}
-?>
