@@ -20,7 +20,7 @@
 </style>
  <body>
  <h2>Notas</h2>
-   <a href="../pdf/A_notaspdf.php" class="btn btn-danger">Reportes</a><br>
+   <a target="blank" href="../pdf/A_notaspdf.php" class="btn btn-danger">Reportes</a><br>
     
      <!-- Data -->
      <br>

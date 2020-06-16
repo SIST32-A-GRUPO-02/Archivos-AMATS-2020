@@ -19,7 +19,7 @@ $conn= new baseD();
 
 <h2>Evaluaciones</h2>
      <!-- Data -->
-     <a href="../pdf/D_evaluacionpdf.php" class="btn btn-danger">Reportes</a><br><br>
+     <a target="blank" href="../pdf/D_evaluacionpdf.php" class="btn btn-danger">Reportes</a><br><br>
      <div>
      
        <form action="" method="post">

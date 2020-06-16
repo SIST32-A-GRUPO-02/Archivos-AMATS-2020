@@ -15,7 +15,7 @@
 
  <body>
    <h2>Cursos</h2>
-   <a href="../pdf/A_cursospdf.php" class="btn btn-danger">Reportes</a><br><br>
+   <a target="blank" href="../pdf/A_cursospdf.php" class="btn btn-danger">Reportes</a><br><br>
      <!-- Data -->
   
        <form action="" method="post">

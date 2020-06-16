@@ -19,7 +19,7 @@ else{
    <h2>Alumnos</h2>
      <!-- Data -->
      <div>
-     <a href="../pdf/D_alumnospdf.php" class="btn btn-danger">Reportes</a><br><br>
+     <a target="blank" href="../pdf/D_alumnospdf.php" class="btn btn-danger">Reportes</a><br><br>
      <div id="datos"></div>
  <form action="" method="post">
           <table class="table">

@@ -21,7 +21,7 @@
  <body>
     <h2>Notas</h2>
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
-   <a href="../pdf/D_notaspdf.php" class="btn btn-danger">Reportes</a>
+   <a target="blank" href="../pdf/D_notaspdf.php" class="btn btn-danger">Reportes</a>
  
    <!-- Inicio Modal -->
    <div class="w3-container">

@@ -10,7 +10,7 @@
         <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
         <button onclick="document.getElementById('id03').style.display='block'"
             class="btn btn-primary">Mantenimiento</button>
-        <a href="../pdf/modulospdf.php" class="btn btn-danger">Reportes</a>
+        <a target="blank" href="../pdf/Ad_modulospdf.php" class="btn btn-danger">Reportes</a>
         <div style="float: right; margin-right:40px;">
             <form action="" method="post">
                 <input type="text" style="border-radius: 5px;" name="busqueda" required>

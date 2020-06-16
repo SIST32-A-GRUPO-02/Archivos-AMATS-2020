@@ -9,7 +9,7 @@
    <div style="margin-bottom: 5px; margin-left:16px;">
      <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-success">Agregar</button>
      <button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary" >Mantenimiento</button>
-     <a href="../pdf/usuariospdf.php" class="btn btn-danger">Reportes</a>
+     <a target="blank" href="../pdf/Ad_usuariospdf.php" class="btn btn-danger">Reportes</a>
      <div style="float: right; margin-right:40px;">
             <form action="" method="post">
                 <input type="text" style="border-radius: 5px;" name="busqueda" required>
@@ -314,7 +314,7 @@
                  foreach ($consulta_alumnos as $datos) {
                    $id_del = $datos['idUsuario'];
                    $usuario = $datos['usuario'];
-                   $rol = $datos['nombreRol'];
+                   $rol = $datos['usuario'];
                    $nombrePar = $datos['nombres'];
                    $apellidoPar = $datos['apellidos'];
                  ?>
