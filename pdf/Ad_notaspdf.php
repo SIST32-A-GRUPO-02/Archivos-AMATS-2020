@@ -38,7 +38,7 @@
             $pdf->Cell(25,6,$datos['nota'],1,1,'C');
            }
         }else{
-            $pdf->Cell(180,6,'No hay datos',1,1,'C');
+            $pdf->Cell(195,6,'No hay datos',1,1,'C');
         }
 
         $pdf->Output();

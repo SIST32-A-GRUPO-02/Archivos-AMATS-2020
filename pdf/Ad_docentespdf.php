@@ -32,28 +32,24 @@
     //inicio de tabla
 		$pdf->SetFillColor(232,232,232);
         $pdf->SetFont('Arial','B',11);
-        $pdf->Cell(23.75,6,'NOMBRES',1,0,'C',1);
-        $pdf->Cell(23.75,6,'APELLIDOS',1,0,'C',1);
-        $pdf->Cell(23.75,6,'NACIMIENTO',1,0,'C',1);
-        $pdf->Cell(23.75,6,'SEXO',1,0,'C',1);
+        $pdf->Cell(40,6,'NOMBRES',1,0,'C',1);
+        $pdf->Cell(40,6,'APELLIDOS',1,0,'C',1);
+        $pdf->Cell(30,6,'NACIMIENTO',1,0,'C',1);
+        $pdf->Cell(20,6,'SEXO',1,0,'C',1);
         $pdf->Cell(23.75,6,'DUI',1,0,'C',1);
-        $pdf->Cell(23.75,6,'NIT',1,0,'C',1);
-        $pdf->Cell(23.75,6,'DIRECCION',1,0,'C',1);
-        $pdf->Cell(23.75,6,'ESPECIALIDAD',1,1,'C',1);
+        $pdf->Cell(30,6,'ESPECIALIDAD',1,1,'C',1);
 
         if($consulta!=true){
             
         }else{
             foreach($consulta as $datos){
             
-                $pdf->Cell(23.75,6, $datos['nombres'],1,0,'C',0);
-                $pdf->Cell(23.75,6, $datos['apellidos'],1,0,'C',0);
-                $pdf->Cell(23.75,6, $datos['fechaNacimiento'],1,0,'C',0);
-                $pdf->Cell(23.75,6, $datos['sexo'],1,0,'C',0);
+                $pdf->Cell(40,6, $datos['nombres'],1,0,'C',0);
+                $pdf->Cell(40,6, $datos['apellidos'],1,0,'C',0);
+                $pdf->Cell(30,6, $datos['fechaNacimiento'],1,0,'C',0);
+                $pdf->Cell(20,6, $datos['sexo'],1,0,'C',0);
                 $pdf->Cell(23.75,6, $datos['dui'],1,0,'C',0);
-                $pdf->Cell(23.75,6, $datos['nit'],1,0,'C',0);
-                $pdf->Cell(23.75,6, $datos['direccion'],1,0,'C',0);
-                $pdf->Cell(23.75,6, $datos['nombreEspecialidad'],1,0,'C',0);
+                $pdf->Cell(30,6, $datos['nombreEspecialidad'],1,0,'C',0);
               
             }
         }

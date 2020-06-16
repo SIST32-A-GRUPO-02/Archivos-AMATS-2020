@@ -61,6 +61,9 @@ if(isset($_SESSION['rol'])){
                     <li>
                         <a href="?x=usuarios.php"> <span class="material-icons"><img src="../images/icons/usuarios.png" alt="">  Usuarios</a>
                     </li>
+                    <li>
+                        <a href="../cerrar.php"> <span class="material-icons"><img src="../images/icons/salir.png" alt="" width="30px" style="margin-left: 5px;">  Usuarios</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -96,12 +99,11 @@ if(isset($_SESSION['rol'])){
                     </div>
                 </div>
             </nav>
-
-            <h2 class="mb-4">Control de notas para centro técnico</h2>
             <?php
             if (isset($_GET['x'])) {
                 include($_GET['x']);
             } else {
+                include("../Pagina principal.html");
             }
 
             ?>

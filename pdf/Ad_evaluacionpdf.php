@@ -39,7 +39,7 @@
             $pdf->Cell(50,6,$datos['idModulo'],1,1,'C');
         }
     }else{
-        $pdf->Cell(160,6,'No hay datos',1,1,'C',1);
+        $pdf->Cell(150,6,'No hay datos',1,1,'C',1);
     }
 
     $pdf->Output();
