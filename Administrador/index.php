@@ -63,7 +63,7 @@ if(isset($_SESSION['rol'])){
                         <a href="?x=usuarios.php"> <span class="material-icons"><img src="../images/icons/usuarios.png" alt="">  Usuarios</a>
                     </li>
                     <li>
-                        <a href="?x=../graficas/graficas.php"> <span class="material-icons"><img src="../images/icons/salir.png" alt="" width="30px" style="margin-left: 5px;"> Graficas</a>
+                        <a target="blank" href="../graficas/graficas.php"> <span class="material-icons"><img src="../images/icons/graficas.png" alt="" width="30px" style="margin-left: 5px;"> Graficas</a>
                     </li>
                     <li>
                         <a href="../cerrar.php"> <span class="material-icons"><img src="../images/icons/salir.png" alt="" width="30px" style="margin-left: 5px;"> Salir</a>

@@ -91,7 +91,7 @@
                             required>
                         <label><b>Fecha de Nacimiento</b></label>
                         <input class="w3-input w3-border" type="date" placeholder="Escriba la Fecha de Nacimiento"
-                            name="fecha" required>
+                            name="fecha" max="2004-01-01" required>
                         <input type="submit" class="w3-button w3-block w3-green w3-section w3-padding" value="Registrar"
                             name="send_insert">
                     </div>

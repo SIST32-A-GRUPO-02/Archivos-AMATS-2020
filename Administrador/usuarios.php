@@ -31,7 +31,7 @@
              <label><b>Usuario</b></label>
              <input class="w3-input w3-border " type="text" placeholder="Escriba el usuario" name="usuario" required>
              <label><b>Contraseña</b></label>
-             <input class="w3-input w3-border" type="text" placeholder="1234" name="contraseña" required>
+             <input class="w3-input w3-border" type="password" placeholder="1234" name="contraseña" required>
              <label><b>Seleccione el Tipo (Docente o Alumno)</b></label>
              <select name="tipo" id="tipo" class="w3-input w3-border">
                  <option value="2" >Alumno</option>
@@ -314,7 +314,7 @@
                  foreach ($consulta_alumnos as $datos) {
                    $id_del = $datos['idUsuario'];
                    $usuario = $datos['usuario'];
-                   $rol = $datos['usuario'];
+                   $rol = $datos['nombreRol'];
                    $nombrePar = $datos['nombres'];
                    $apellidoPar = $datos['apellidos'];
                  ?>

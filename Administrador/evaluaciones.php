@@ -153,7 +153,8 @@
                `evaluaciones`.`idEvaluaciones`,
                 `evaluaciones`.`nombreEvaluacion`,
                 `evaluaciones`.`porcentaje`,
-                `modulo`.`idModulo`
+                `modulo`.`idModulo`,
+                `modulo`.`nombreModulo`
                 FROM
                 `dawproyecto`.`evaluaciones`
                 INNER JOIN `dawproyecto`.`modulo`
@@ -165,11 +166,12 @@
                 $nombre = $datos['nombreEvaluacion'];
                 $porcentaje = $datos['porcentaje'];
                 $modulo =$datos['idModulo'];
+                $nombreModulo =$datos['nombreModulo'];
 
                 echo " <tr>
           <td>$nombre</td>
           <td>$porcentaje</td>
-          <td>$modulo</td>";
+          <td>$nombreModulo</td>";
           
           echo "</tr>";
               }
@@ -179,7 +181,8 @@
                `evaluaciones`.`idEvaluaciones`,
                 `evaluaciones`.`nombreEvaluacion`,
                 `evaluaciones`.`porcentaje`,
-                `modulo`.`idModulo`
+                `modulo`.`idModulo`,
+                `modulo`.`nombreModulo`
                 FROM
                 `dawproyecto`.`evaluaciones`
                 INNER JOIN `dawproyecto`.`modulo`
@@ -193,11 +196,12 @@
                 $nombre = $datos['nombreEvaluacion'];
                 $porcentaje = $datos['porcentaje'];
                 $modulo = $datos['idModulo'];
+                $nombreModulo =$datos['nombreModulo'];
 
                 echo " <tr>
           <td>$nombre</td>
           <td>$porcentaje</td>
-          <td>$modulo</td>";
+          <td>$nombreModulo</td>";
 
                 echo "</tr>";
               }

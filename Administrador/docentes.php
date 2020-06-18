@@ -66,7 +66,7 @@
              <label><b>NIT</b></label>
              <input class="w3-input w3-border" type="text" placeholder="Escriba el número de NIT" name="nit" required>
              <label><b>Fecha de Nacimiento</b></label>
-             <input class="w3-input w3-border" type="date" placeholder="Escriba la Fecha de Nacimiento" name="fecha" required>
+             <input class="w3-input w3-border" type="date" placeholder="Escriba la Fecha de Nacimiento" name="fecha" max="2002-01-01" required>
              <input type="submit" class="w3-button w3-block w3-green w3-section w3-padding" value="Registrar" name="send_insert">
            </div>
          </form>
