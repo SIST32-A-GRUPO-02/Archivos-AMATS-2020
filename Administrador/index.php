@@ -23,6 +23,7 @@ if(isset($_SESSION['rol'])){
     <link rel="stylesheet" href="../css/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   
 </head>
 
 <body>
@@ -62,8 +63,12 @@ if(isset($_SESSION['rol'])){
                         <a href="?x=usuarios.php"> <span class="material-icons"><img src="../images/icons/usuarios.png" alt="">  Usuarios</a>
                     </li>
                     <li>
-                        <a href="../cerrar.php"> <span class="material-icons"><img src="../images/icons/salir.png" alt="" width="30px" style="margin-left: 5px;">  Usuarios</a>
+                        <a href="?x=../graficas/graficas.php"> <span class="material-icons"><img src="../images/icons/salir.png" alt="" width="30px" style="margin-left: 5px;"> Graficas</a>
                     </li>
+                    <li>
+                        <a href="../cerrar.php"> <span class="material-icons"><img src="../images/icons/salir.png" alt="" width="30px" style="margin-left: 5px;"> Salir</a>
+                    </li>
+                    
                 </ul>
             </div>
         </nav>
